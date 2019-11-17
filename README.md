@@ -1,10 +1,10 @@
-docker-ubuntu-vnc-desktop
+Neurolab
 =========================
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/tylerbanks/neurolab.svg)](https://hub.docker.com/r/tylerbanks/neurolab)
 [![Docker Stars](https://img.shields.io/docker/stars/tylerbanks/neurolab.svg)](https://hub.docker.com/r/tylerbanks/neurolab)
 
-Docker image to provide HTML5 VNC interface to access Ubuntu 16.04 LXDE desktop environment.
+Docker image to provide HTML5 VNC interface to access Ubuntu 16.04 LXDE desktop environment with neuroscience tools installed.
 
 Neuroscience tools provided:
 
