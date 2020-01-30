@@ -1,5 +1,5 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc
-
+# VERSION 0.1.0
 RUN apt update
 RUN apt install -y build-essential gcc make perl dkms git vim lib32ncurses5-dev libreadline-dev libx11-dev cmake wget libx11-dev libxcomposite-dev git
 
