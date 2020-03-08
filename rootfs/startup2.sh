@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 if [ -n "$VNC_PASSWORD" ]; then
     echo -n "$VNC_PASSWORD" > /.password1
     x11vnc -storepasswd $(cat /.password1) /.password2
@@ -26,10 +24,10 @@ USER=${USER:-root}
 HOME=/root
 if [ "$USER" != "root" ]; then
     echo "* enable custom user: $USER"
-    useradd --create-home --shell /bin/bash --user-group --groups adm,sudo $USER
+    useradd --create-home --shell /bin/bash --user-group --groups adm $USER
     if [ -z "$PASSWORD" ]; then
-        echo "  set default password to \"ubuntu\""
-        PASSWORD=ubuntu
+        echo "  set default password to \"mizzou\""
+        PASSWORD=mizzou
     fi
     HOME=/home/$USER
     echo "$USER:$PASSWORD" | chpasswd
@@ -93,6 +91,9 @@ if [ -n "$RELATIVE_URL_ROOT" ]; then
 fi
 
 exec /bin/tini -- supervisord -n -c /etc/supervisor/supervisord.conf
+
+groupadd neuro
+chown -R $USER:neuro /usr/neurotools 
 
 EXTRA_FILE=/startup_extra.sh
 if test -f "$EXTRA_FILE"; then

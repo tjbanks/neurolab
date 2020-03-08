@@ -1,11 +1,15 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc
-# VERSION 0.1.0
+# VERSION 0.1.1
+RUN DEBIAN_FRONTEND="noninteractive"
+RUN date
 RUN apt update
-RUN apt install -y build-essential gcc make perl dkms git vim lib32ncurses5-dev libreadline-dev libx11-dev cmake wget libx11-dev libxcomposite-dev git
+RUN apt install -y build-essential gcc make perl dkms git vim lib32ncurses5-dev libreadline-dev libx11-dev cmake wget libx11-dev libxcomposite-dev gitm mailutils ufw
+RUN service postfix start
 
 RUN mkdir /usr/neurotools \
     && mkdir /usr/neurotools/nrn \
-    && mkdir /usr/neurotools/bmtk 
+    && mkdir /usr/neurotools/bmtk
+    
 #CONDA
 RUN cd /usr/neurotools \
     && wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
@@ -67,6 +71,15 @@ RUN cd /usr/neurotools \
     && /usr/neurotools/conda/envs/py36/bin/python setup.py develop
 
 #RUN chmod -v -R 777 /usr/neurotools
+
+#VSCode
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg \
+    && sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/ \
+    && sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \
+    && sudo apt-get install apt-transport-https \
+    && sudo apt-get update \
+    && sudo apt-get install code
+
 
 COPY rootfs /
 ENTRYPOINT ["/startup2.sh"]
