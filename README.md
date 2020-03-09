@@ -1,8 +1,12 @@
-Neurolab
+Neurolab Basic
 =========================
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/tylerbanks/neurolab.svg)](https://hub.docker.com/r/tylerbanks/neurolab)
 [![Docker Stars](https://img.shields.io/docker/stars/tylerbanks/neurolab.svg)](https://hub.docker.com/r/tylerbanks/neurolab)
+
+
+This basic image runs from Neurolab 0.1.1, downloads several scripts (online) to be run at build time. 
+
 
 Docker image to provide HTML5 VNC interface to access Ubuntu 16.04 LXDE desktop environment with neuroscience tools installed.
 
