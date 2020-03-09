@@ -1,9 +1,8 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc
 # VERSION 0.1.1
 RUN DEBIAN_FRONTEND="noninteractive"
-RUN date
 RUN apt update
-RUN apt install -y build-essential gcc make perl dkms git vim lib32ncurses5-dev libreadline-dev libx11-dev cmake wget libx11-dev libxcomposite-dev gitm mailutils ufw
+RUN apt install -y build-essential gcc make perl dkms git vim lib32ncurses5-dev libreadline-dev libx11-dev cmake wget libx11-dev libxcomposite-dev git mailutils ufw
 RUN service postfix start
 
 RUN mkdir /usr/neurotools \
@@ -96,6 +95,3 @@ ENTRYPOINT ["/startup2.sh"]
  
 #RUN cd ~/easy-nrn-install \
 #    && ./easy-bmtk-install.sh /usr/neurotools
-
-
-

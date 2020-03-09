@@ -24,7 +24,7 @@ USER=${USER:-root}
 HOME=/root
 if [ "$USER" != "root" ]; then
     echo "* enable custom user: $USER"
-    useradd --create-home --shell /bin/bash --user-group --groups adm $USER
+    useradd --create-home --shell /bin/bash --user-group --groups adm,sudo $USER
     if [ -z "$PASSWORD" ]; then
         echo "  set default password to \"mizzou\""
         PASSWORD=mizzou
@@ -66,6 +66,12 @@ echo "alias update-bmtk='cd /usr/neurotools/bmtk/bmtk && git pull'" >> $HOME/.ba
 echo "alias update-bmtools='cd /usr/neurotools/bmtools && git pull'" >> $HOME/.bashrc
 #chown -R $USER:$USER /usr/neurotools
 
+EXTRA_FILE=/startup_extra.sh
+if test -f "$EXTRA_FILE"; then
+    echo "executing $EXTRA_FILE"
+    /bin/bash $EXTRA_FILE
+fi
+
 # nginx workers
 sed -i 's|worker_processes .*|worker_processes 1;|' /etc/nginx/nginx.conf
 
@@ -92,14 +98,9 @@ fi
 
 exec /bin/tini -- supervisord -n -c /etc/supervisor/supervisord.conf
 
-groupadd neuro
-chown -R $USER:neuro /usr/neurotools 
+#groupadd neuro
+#chown -R $USER:neuro /usr/neurotools 
 
-EXTRA_FILE=/startup_extra.sh
-if test -f "$EXTRA_FILE"; then
-    echo "executing $EXTRA_FILE"
-    /bin/bash /startup_extra.sh
-fi
 # clearup
 PASSWORD=
 HTTP_PASSWORD=
