@@ -12,7 +12,7 @@
 To create your own docker image based off of NeuroLab place the following at the top of your `Dockerfile`
 
 ```
-from tylerbanks/neurolab:0.1.0
+from tylerbanks/neurolab:0.1.1
 ```
 
 For system changes after startup create a `starup_extra.sh` and copy it to the root filesystem. It will run automatically
@@ -57,10 +57,10 @@ rocker/verse            latest    0168d115f220     3 days ago        1.954 GB
 and tag your image
 
 ```
-docker tag bb38976d03cf yourhubusername/neurolab:0.1.0
+docker tag bb38976d03cf yourhubusername/neurolab:0.1.1
 ```
 
-The number must match the image ID and :0.1.0 is the tag. 
+The number must match the image ID and :0.1.1 is the tag. 
 
 6. Push your image to the repository you created
 
