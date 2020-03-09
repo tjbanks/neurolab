@@ -24,7 +24,12 @@ USER=${USER:-root}
 HOME=/root
 if [ "$USER" != "root" ]; then
     echo "* enable custom user: $USER"
-    useradd --create-home --shell /bin/bash --user-group --groups adm $USER
+    if [ -z "$SUDO" ]
+    then
+        useradd --create-home --shell /bin/bash --user-group --groups adm $USER
+    else
+        useradd --create-home --shell /bin/bash --user-group --groups adm,sudo $USER
+    fi
     if [ -z "$PASSWORD" ]; then
         echo "  set default password to \"mizzou\""
         PASSWORD=mizzou
