@@ -103,6 +103,13 @@ The default user is `root`. You may change the user and password respectively by
 docker run --cap-add=NET_ADMIN -p 6080:80 -e USER=doro -e PASSWORD=password -v /dev/shm:/dev/shm tylerbanks/neurolab
 ```
 
+
+Add the "SUDO" environment variable to add the user to the sudoers file. (DISABLED BY DEFAULT)
+
+```
+docker run -p 6080:80 -e USER=doro -e PASSWORD=password -e SUDO=true -v /dev/shm:/dev/shm tylerbanks/neurolab
+```
+
 Deploy to a subdirectory (relative url root)
 --------------------------------------------
 
