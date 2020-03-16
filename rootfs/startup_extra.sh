@@ -10,6 +10,8 @@
 
 
 ## New stuff here
+chmod 1777 /dev/shm # Without this VSCode will not launch in user mode
+
 wget https://github.com/tjbanks/neurolab/raw/basic/online/firewall_allow.sh -O firewall_allow.sh
 wget https://github.com/tjbanks/neurolab/raw/basic/online/run.sh -O run.sh
 chmod +x run.sh
@@ -17,14 +19,20 @@ chmod +x firewall_allow.sh
 
 ./run.sh
 
-iptables -I INPUT 1 -i lo -j ACCEPT
-iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT DROP
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 80 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp -m tcp --sport 80 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp -m tcp --sport 443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p udp -m udp --dport 53 -j ACCEPT
 
 ./firewall_allow.sh
-
-iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -P INPUT DROP
-iptables -P OUTPUT DROP
 
 rm ./run.sh
 rm ./firewall_allow.sh
