@@ -5,7 +5,7 @@ git clone https://github.com/tjbanks/Tutorials_S2-S6
 git clone https://github.com/chenziao/Computational-Neuroscience-Tutorials
 # git clone https://github.com/tjbanks/bmtool-cell-prefab
 # git clone https://github.com/tjbanks/two-cell-hco
-git clone http://github.com/latimerb/Project_M1
+git clone https://github.com/latimerb/Project_M1
 rm ./Project_M1/ProjectM1_Solution.ipynb
 
 mkdir bmtk
