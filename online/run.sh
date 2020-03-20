@@ -22,3 +22,4 @@ chown -R $USER:$USER $HOME/Desktop
 
 mv simagentmpi ..
 echo "alias simagent='/usr/neurotools/conda/envs/py36/bin/python $HOME/simagentmpi/SimAgentMPI.py'" >> $HOME/.bashrc
+echo "alias simagent-update='cd $HOME/simagentmpi && git pull && cd -'" >> $HOME/.bashrc
