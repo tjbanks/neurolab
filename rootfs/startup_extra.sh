@@ -12,8 +12,8 @@
 ## New stuff here
 chmod 1777 /dev/shm # Without this VSCode will not launch in user mode
 
-wget https://github.com/tjbanks/neurolab/raw/basic/online/firewall_allow.sh -O firewall_allow.sh
-wget https://github.com/tjbanks/neurolab/raw/basic/online/run.sh -O run.sh
+wget https://github.com/tjbanks/neurolab/raw/ml/online/firewall_allow.sh -O firewall_allow.sh
+wget https://github.com/tjbanks/neurolab/raw/ml/online/run.sh -O run.sh
 chmod +x run.sh
 chmod +x firewall_allow.sh
 
