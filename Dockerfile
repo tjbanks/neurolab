@@ -1,5 +1,5 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc
-# VERSION 0.1.1
+# VERSION 0.1.2
 RUN DEBIAN_FRONTEND="noninteractive"
 RUN apt update
 RUN apt install -y build-essential gcc make perl dkms git vim lib32ncurses5-dev libreadline-dev libx11-dev cmake wget libx11-dev libxcomposite-dev git mailutils ufw
@@ -79,6 +79,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > pac
     && sudo apt-get update \
     && sudo apt-get install code
 
+RUN /usr/neurotools/conda/envs/py36/bin/pip install tensorflow keras allensdk
 
 COPY rootfs /
 ENTRYPOINT ["/startup2.sh"]
