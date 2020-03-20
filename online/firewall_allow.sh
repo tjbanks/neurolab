@@ -173,3 +173,8 @@ iptables -A OUTPUT -p tcp -d 185.199.108.0/22 --dport 80 -j ACCEPT
 iptables -A OUTPUT -p tcp -d 185.199.108.0/22 --dport 443 -j ACCEPT
 iptables -A OUTPUT -p tcp -d 140.82.112.0/20 --dport 80 -j ACCEPT
 iptables -A OUTPUT -p tcp -d 140.82.112.0/20 --dport 443 -j ACCEPT
+
+# Allen Institute API
+
+# NSG
+

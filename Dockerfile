@@ -1,3 +1,3 @@
-FROM tylerbanks/neurolab:0.1.1
+FROM tylerbanks/neurolab:0.1.2
 
 COPY rootfs /
