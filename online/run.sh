@@ -1,3 +1,9 @@
+# Due to issues with newer versions of BMTK and our code we'll be using an older version - (validated by Ziao)
+# Must be done before copying the docs to the desktop.
+cd /usr/neurotools/bmtk/bmtk/
+git checkout 52fee3b230ceb14a666c46f57f2031c38f1ac5b1 .
+cd -
+
 cd $HOME
 mkdir Desktop 
 cd Desktop
@@ -23,8 +29,3 @@ chown -R $USER:$USER $HOME/Desktop
 mv simagentmpi ..
 echo "alias simagent='/usr/neurotools/conda/envs/py36/bin/python $HOME/simagentmpi/SimAgentMPI.py'" >> $HOME/.bashrc
 echo "alias simagent-update='cd $HOME/simagentmpi && git pull && cd -'" >> $HOME/.bashrc
-
-# Due to issues with newer versions of BMTK and our code we'll be using an older version - (validated by Ziao)
-cd /usr/neurotools/bmtk/bmtk/
-git checkout 52fee3b230ceb14a666c46f57f2031c38f1ac5b1 .
-cd -
