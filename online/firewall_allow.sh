@@ -179,4 +179,5 @@ iptables -A OUTPUT -p tcp -d 63.237.233.29 --dport 80 -j ACCEPT
 iptables -A OUTPUT -p tcp -d 63.237.233.29 --dport 443 -j ACCEPT
 
 # NSG
+iptables -A OUTPUT -p tcp -d 132.249.20.49 --dport 8443 -j ACCEPT
 
