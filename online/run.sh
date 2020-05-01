@@ -30,5 +30,7 @@ mv simagentmpi ..
 echo "alias simagent='/usr/neurotools/conda/envs/py36/bin/python $HOME/simagentmpi/SimAgentMPI.py'" >> $HOME/.bashrc
 echo "alias simagent-update='cd $HOME/simagentmpi && git pull && cd -'" >> $HOME/.bashrc
 
+/usr/neurotools/conda/envs/py36/bin/pip install --upgrade bmtool
+
 apt-get update
 apt-get install zip unzip -qy
