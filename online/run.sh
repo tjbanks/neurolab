@@ -56,8 +56,8 @@ echo "case \"\$1\" in">>$SFILE
 echo " start)">>$SFILE
 #echo "   su $USER -c \"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser --NotebookApp.token=''\"">>$SFILE
 #echo "   sh -c \"sleep 1; echo $USER\" | script -qc "su $USER -c \"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser --NotebookApp.token=\'\'\""">>$SFILE
-echo "    export jcommand=\"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser --NotebookApp.token=''\""
-echo "    sh -c \"sleep 1; echo $USER\" | script -qc \"su $USER -c \$jcommand\""
+echo "    export jcommand=\"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser --NotebookApp.token=''\"">>$SFILE
+echo "    sh -c \"sleep 1; echo $USER\" | script -qc \"su $USER -c \$jcommand\"">>$SFILE
 echo "   ;;">>$SFILE
 echo " stop)">>$SFILE
 echo "   sleep 10">>$SFILE
