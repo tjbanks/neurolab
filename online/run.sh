@@ -24,15 +24,15 @@ echo "Exec=firefox https://cyneuro.github.io/neurolab/index.html">>$HFILE
 echo "Name=Learning Resources">>$HFILE
 echo "Icon=text-html">>$HFILE
 
-export FFILE="./feedback.desktop"
-touch $FFILE
-echo "[Desktop Entry]">>$FFILE
-echo "Version=1.0">>$FFILE
-echo "Type=Application">>$FFILE
-echo "Terminal=true">>$FFILE
-echo "Exec=firefox https://missouri.qualtrics.com/jfe/form/SV_8HVvoVJBKND75nD">>$FFILE
-echo "Name=NeuroLab Survey">>$FFILE
-echo "Icon=text-html">>$FFILE
+#export FFILE="./feedback.desktop"
+#touch $FFILE
+#echo "[Desktop Entry]">>$FFILE
+#echo "Version=1.0">>$FFILE
+#echo "Type=Application">>$FFILE
+#echo "Terminal=true">>$FFILE
+#echo "Exec=firefox https://missouri.qualtrics.com/jfe/form/SV_8HVvoVJBKND75nD">>$FFILE
+#echo "Name=NeuroLab Survey">>$FFILE
+#echo "Icon=text-html">>$FFILE
 
 mkdir bmtk
 cp -r /usr/neurotools/bmtk/bmtk/docs/ ./bmtk/
