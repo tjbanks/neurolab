@@ -43,8 +43,8 @@ touch $SFILE
 echo "#! /bin/sh">>$SFILE
 echo "### BEGIN INIT INFO">>$SFILE
 echo "# Provides: jupyter">>$SFILE
-echo "# Required-Start: $remote_fs $syslog">>$SFILE
-echo "# Required-Stop: $remote_fs $syslog">>$SFILE
+echo "# Required-Start: \$remote_fs \$syslog">>$SFILE
+echo "# Required-Stop: \$remote_fs \$syslog">>$SFILE
 echo "# Default-Start: 2 3 4 5">>$SFILE
 echo "# Default-Stop: 0 1 6">>$SFILE
 echo "# Short-Description: Jupyter">>$SFILE
@@ -54,7 +54,8 @@ echo "### END INIT INFO">>$SFILE
 echo "">>$SFILE
 echo "case \"\$1\" in">>$SFILE
 echo " start)">>$SFILE
-echo "   su $USER -c \"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser\"">>$SFILE
+#echo "   su $USER -c \"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser --NotebookApp.token=''\"">>$SFILE
+echo "   sh -c \"sleep 1; echo $USER\" | script -qc "su $USER -c \"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser --NotebookApp.token=\'\'\""">>$SFILE
 echo "   ;;">>$SFILE
 echo " stop)">>$SFILE
 echo "   sleep 10">>$SFILE
