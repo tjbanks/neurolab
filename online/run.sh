@@ -36,7 +36,7 @@ apt-get update
 apt-get install zip unzip -qy
 
 # Online learning resource - auto start jupyter notebooks
-SFILE="/etc/init.d/jupyter"
+export SFILE="/etc/init.d/jupyter"
 
 touch $SFILE
 
@@ -70,7 +70,7 @@ echo "esac">>$SFILE
 
 chmod a+x $SFILE
 
-update-rc.d tomcat defaults
+update-rc.d jupyter defaults
 
 service jupyter start 
 
