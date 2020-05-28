@@ -30,7 +30,7 @@ echo "[Desktop Entry]">>$JFILE
 echo "Version=1.0">>$JFILE
 echo "Type=Application">>$JFILE
 echo "Terminal=true">>$JFILE
-echo "Exec=firefox http://127.0.0.1:8888/tree">>$JFILE
+echo "Exec=jupyter-notebook">>$JFILE
 echo "Name=Jupyter Notebook">>$JFILE
 echo "Icon=text-html">>$JFILE
 
@@ -106,5 +106,5 @@ chmod a+x $SFILE
 
 update-rc.d jupyter defaults
 
-service jupyter start
-
+#service jupyter start
+# turns out environment variables needed for neuron can't be done this way, user will just have to click jupyter icon
