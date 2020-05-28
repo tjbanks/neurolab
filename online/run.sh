@@ -36,4 +36,26 @@ apt-get update
 apt-get install zip unzip -qy
 
 # Online learning resource - auto start jupyter notebooks
-jupyter notebook --ip=127.0.0.1 --allow-root --no-browser &
+#https://stackoverflow.com/questions/14297741/how-to-start-ipython-notebook-server-at-boot-as-daemon
+touch /etc/systemd/system/ipython-notebook.service
+
+echo "[Unit]" >> /etc/systemd/system/ipython-notebook.service
+echo "Description=IPython notebook" >> /etc/systemd/system/ipython-notebook.service
+echo "" >> /etc/systemd/system/ipython-notebook.service
+echo "[Service]" >> /etc/systemd/system/ipython-notebook.service
+echo "Type=simple" >> /etc/systemd/system/ipython-notebook.service
+echo "PIDFile=/var/run/ipython-notebook.pid" >> /etc/systemd/system/ipython-notebook.service
+echo "ExecStart=/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser" >> /etc/systemd/system/ipython-notebook.service
+echo "User=$USER" >> /etc/systemd/system/ipython-notebook.service
+echo "Group=$USER" >> /etc/systemd/system/ipython-notebook.service
+echo "WorkingDirectory=/home/$USER" >> /etc/systemd/system/ipython-notebook.service
+echo "" >> /etc/systemd/system/ipython-notebook.service
+echo "[Install]" >> /etc/systemd/system/ipython-notebook.service
+echo "WantedBy=multi-user.target" >> /etc/systemd/system/ipython-notebook.service
+
+systemctl daemon-reload
+systemctl enable ipython-notebook
+systemctl start ipython-notebook
+
+
+
