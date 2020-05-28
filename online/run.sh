@@ -14,6 +14,24 @@ git clone https://github.com/chenziao/Computational-Neuroscience-Tutorials
 git clone https://github.com/latimerb/Project_M1
 rm ./Project_M1/ProjectM1_Solution.ipynb
 
+export HFILE="./home.desktop"
+touch $HFILE
+echo "[Desktop Entry]">>$HFILE
+echo "Version=1.0">>$HFILE
+echo "Type=Application">>$HFILE
+echo "Terminal=true">>$HFILE
+echo "Exec=firefox https://cyneuro.github.io/neurolab/index.html">>$HFILE
+echo "Name=Learning Resources">>$HFILE
+
+export FFILE="./feedback.desktop"
+touch $FFILE
+echo "[Desktop Entry]">>$FFILE
+echo "Version=1.0">>$FFILE
+echo "Type=Application">>$FFILE
+echo "Terminal=true">>$FFILE
+echo "Exec=firefox https://missouri.qualtrics.com/jfe/form/SV_8HVvoVJBKND75nD">>$FFILE
+echo "Name=NeuroLab Survey">>$FFILE
+
 mkdir bmtk
 cp -r /usr/neurotools/bmtk/bmtk/docs/ ./bmtk/
 
