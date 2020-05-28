@@ -72,7 +72,7 @@ chmod a+x $SFILE
 
 update-rc.d jupyter defaults
 
-service jupyter start 
+
 
 
 
