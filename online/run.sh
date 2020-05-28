@@ -24,6 +24,16 @@ echo "Exec=firefox https://cyneuro.github.io/neurolab/index.html">>$HFILE
 echo "Name=Learning Resources">>$HFILE
 echo "Icon=text-html">>$HFILE
 
+export JFILE="./jupyter.desktop"
+touch $JFILE
+echo "[Desktop Entry]">>$JFILE
+echo "Version=1.0">>$JFILE
+echo "Type=Application">>$JFILE
+echo "Terminal=true">>$JFILE
+echo "Exec=firefox http://127.0.0.1:8888/tree">>$JFILE
+echo "Name=Jupyter Notebook">>$JFILE
+echo "Icon=text-html">>$JFILE
+
 #export FFILE="./feedback.desktop"
 #touch $FFILE
 #echo "[Desktop Entry]">>$FFILE
