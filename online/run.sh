@@ -58,7 +58,7 @@ echo " start)">>$SFILE
 #echo "   sh -c \"sleep 1; echo $USER\" | script -qc "su $USER -c \"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser --NotebookApp.token=\'\'\""">>$SFILE
 echo "    export jcommand=\"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser --NotebookApp.token='' /home/$USER\"">>$SFILE
 #echo "    sh -c \"sleep 1; echo $USER\" | script -qc \"su $USER -c \$jcommand\"">>$SFILE
-echo "    \$jcommand">>$SFILE
+echo "    \$jcommand &">>$SFILE
 echo "   ;;">>$SFILE
 echo " stop)">>$SFILE
 echo "   sleep 10">>$SFILE
@@ -76,5 +76,5 @@ chmod a+x $SFILE
 
 update-rc.d jupyter defaults
 
-#service jupyter start
+service jupyter start
 
