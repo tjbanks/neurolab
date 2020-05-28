@@ -36,7 +36,7 @@ apt-get update
 apt-get install zip unzip -qy
 
 # Online learning resource - auto start jupyter notebooks
-SFILE="/etc/init./jupyter"
+SFILE="/etc/init.d/jupyter"
 
 touch $SFILE
 
