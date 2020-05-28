@@ -36,26 +36,43 @@ apt-get update
 apt-get install zip unzip -qy
 
 # Online learning resource - auto start jupyter notebooks
-#https://stackoverflow.com/questions/14297741/how-to-start-ipython-notebook-server-at-boot-as-daemon
-touch /etc/systemd/system/ipython-notebook.service
+SFILE="/etc/init./jupyter"
 
-echo "[Unit]" >> /etc/systemd/system/ipython-notebook.service
-echo "Description=IPython notebook" >> /etc/systemd/system/ipython-notebook.service
-echo "" >> /etc/systemd/system/ipython-notebook.service
-echo "[Service]" >> /etc/systemd/system/ipython-notebook.service
-echo "Type=simple" >> /etc/systemd/system/ipython-notebook.service
-echo "PIDFile=/var/run/ipython-notebook.pid" >> /etc/systemd/system/ipython-notebook.service
-echo "ExecStart=/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser" >> /etc/systemd/system/ipython-notebook.service
-echo "User=$USER" >> /etc/systemd/system/ipython-notebook.service
-echo "Group=$USER" >> /etc/systemd/system/ipython-notebook.service
-echo "WorkingDirectory=/home/$USER" >> /etc/systemd/system/ipython-notebook.service
-echo "" >> /etc/systemd/system/ipython-notebook.service
-echo "[Install]" >> /etc/systemd/system/ipython-notebook.service
-echo "WantedBy=multi-user.target" >> /etc/systemd/system/ipython-notebook.service
+touch $SFILE
 
-systemctl daemon-reload
-systemctl enable ipython-notebook
-systemctl start ipython-notebook
+echo "#! /bin/sh">>$SFILE
+echo "### BEGIN INIT INFO">>$SFILE
+echo "# Provides: jupyter">>$SFILE
+echo "# Required-Start: $remote_fs $syslog">>$SFILE
+echo "# Required-Stop: $remote_fs $syslog">>$SFILE
+echo "# Default-Start: 2 3 4 5">>$SFILE
+echo "# Default-Stop: 0 1 6">>$SFILE
+echo "# Short-Description: Jupyter">>$SFILE
+echo "# Description: This file starts and stops Jupyter server">>$SFILE
+echo "# ">>$SFILE
+echo "### END INIT INFO">>$SFILE
+echo "">>$SFILE
+echo "case \"\$1\" in">>$SFILE
+echo " start)">>$SFILE
+echo "   su $USER -c /usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser">>$SFILE
+echo "   ;;">>$SFILE
+echo " stop)">>$SFILE
+echo "   sleep 10">>$SFILE
+echo "   ;;">>$SFILE
+echo " restart)">>$SFILE
+echo "   sleep 20">>$SFILE
+echo "   ;;">>$SFILE
+echo " *)">>$SFILE
+echo "   echo \"Usage: jupyter {start|stop|restart}\" >&2">>$SFILE
+echo "   exit 3">>$SFILE
+echo "   ;;">>$SFILE
+echo "esac">>$SFILE
+
+chmod a+x $SFILE
+
+update-rc.d tomcat defaults
+
+service jupyter start 
 
 
 
