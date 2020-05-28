@@ -34,3 +34,6 @@ echo "alias simagent-update='cd $HOME/simagentmpi && git pull && cd -'" >> $HOME
 
 apt-get update
 apt-get install zip unzip -qy
+
+# Online learning resource - auto start jupyter notebooks
+jupyter notebook --ip=127.0.0.1 --allow-root --no-browser &
