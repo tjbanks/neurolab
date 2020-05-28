@@ -54,7 +54,7 @@ echo "### END INIT INFO">>$SFILE
 echo "">>$SFILE
 echo "case \"\$1\" in">>$SFILE
 echo " start)">>$SFILE
-echo "   su $USER -c /usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser">>$SFILE
+echo "   su $USER -c \"/usr/neurotools/conda/envs/py36/bin/jupyter notebook --ip=127.0.0.1 --allow-root --no-browser\"">>$SFILE
 echo "   ;;">>$SFILE
 echo " stop)">>$SFILE
 echo "   sleep 10">>$SFILE
