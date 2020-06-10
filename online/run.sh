@@ -106,3 +106,6 @@ update-rc.d jupyter defaults
 
 #service jupyter start
 # turns out environment variables needed for neuron can't be done this way, user will just have to click jupyter icon
+
+echo "export LC_ALL=C.UTF-8" >> $HOME/.bashrc
+echo "export LANG=C.UTF-8" >> $HOME/.bashrc
