@@ -8,8 +8,8 @@ cd $HOME
 
 git clone https://github.com/mackelab/delfi.git
 cd delfi
-pip install -r requirements.txt
-pip install -e .
+/usr/neurotools/conda/envs/py36/bin/pip install -r requirements.txt
+/usr/neurotools/conda/envs/py36/bin/pip install -e .
 
 cd $HOME
 
