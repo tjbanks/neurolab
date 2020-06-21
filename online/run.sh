@@ -5,6 +5,14 @@ git checkout 52fee3b230ceb14a666c46f57f2031c38f1ac5b1 .
 cd -
 
 cd $HOME
+
+git clone https://github.com/mackelab/delfi.git
+cd delfi
+pip install -r requirements.txt
+pip install -e .
+
+cd $HOME
+
 mkdir Desktop 
 cd Desktop
 git clone https://github.com/tjbanks/Tutorials_S2-S6
