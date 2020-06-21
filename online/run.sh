@@ -52,6 +52,13 @@ git checkout linux
 
 cd ..
 
+git clone https://github.com/mackelab/delfi.git
+cd delfi
+pip install -r requirements.txt
+pip install -e .
+
+cd ..
+
 chown -R $USER:$USER $HOME/Desktop
 
 mv simagentmpi ..
