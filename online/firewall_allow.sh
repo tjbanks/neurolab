@@ -185,3 +185,17 @@ iptables -A OUTPUT -p tcp -d 132.249.20.49 --dport 8443 -j ACCEPT
 iptables -A OUTPUT -p tcp -d 104.108.122.55 --dport 80 -j ACCEPT
 iptables -A OUTPUT -p tcp -d 104.108.122.55 --dport 443 -j ACCEPT
 
+# Cyneuro.org
+iptables -A OUTPUT -p tcp -d 128.196.172.133 --dport 80 -j ACCEPT
+#engineering.missouri.edu
+iptables -A OUTPUT -p tcp -d 34.238.11.122 --dport 443 -j ACCEPT
+# www.googletagmanager.com
+iptables -A OUTPUT -p tcp -d 172.217.5.8 --dport 443 -j ACCEPT
+# google.com
+iptables -A OUTPUT -p tcp -d 172.217.8.164 --dport 443 -j ACCEPT
+# ajax.googleapis.com
+iptables -A OUTPUT -p tcp -d 172.217.8.170 --dport 443 -j ACCEPT
+# fonts.googleapis.com
+iptables -A OUTPUT -p tcp -d 172.217.4.74 --dport 443 -j ACCEPT
+# fonts.gstatic.com
+iptables -A OUTPUT -p tcp -d 172.217.4.227 --dport 443 -j ACCEPT
