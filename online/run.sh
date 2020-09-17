@@ -67,6 +67,7 @@ echo "alias simagent='/usr/neurotools/conda/envs/py36/bin/python $HOME/simagentm
 echo "alias simagent-update='cd $HOME/simagentmpi && git pull && cd -'" >> $HOME/.bashrc
 
 /usr/neurotools/conda/envs/py36/bin/pip install --upgrade bmtool
+/usr/neurotools/conda/envs/py36/bin/pip install --upgrade sbi
 
 apt-get update
 apt-get install zip unzip -qy
